@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap");
 
 * {
 	padding: 0;
@@ -37,8 +37,18 @@ section {
 	font-size: 1.1em;
 }
 
+.small-text {
+	font-size: 0.8em;
+}
+
 .f-start {
 	align-self: flex-start;
+}
+
+.brief-title {
+	margin-bottom: 20px;
+	font-size: 1.4em;
+	font-weight: 500;
 }
 
 /* Top Navigation */
@@ -178,6 +188,16 @@ section {
 	flex: 1;
 }
 
+.temp {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.temp-sensation {
+	font-weight: 400;
+	color: var(--grey-600);
+}
+
 /* General Brief - Weather Details */
 
 .weather-details {
@@ -191,17 +211,16 @@ section {
 }
 
 .weather-details-card {
-	border: 2px solid black;
 	display: flex;
 	padding: 10px;
 	min-width: 100px;
+	font-weight: 500;
 }
 
 .weather-details-card .icon-left {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 2px solid red;
 	padding: 5px;
 	width: 40px;
 }
@@ -228,22 +247,24 @@ section {
 }
 
 .hourly-card {
-	border: 2px solid black;
+	background: var(--grey-200);
+	border-radius: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	padding: 10px;
+	font-weight: 600;
 }
 
 .weather-icon {
-	border: 2px solid red;
 	height: 60px;
 	padding: 8px 0px;
 }
 
 .hour-text {
 	padding-bottom: 5px;
+	font-weight: 500;
 }
 
 /* Week brief */
