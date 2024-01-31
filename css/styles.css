@@ -1,18 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;900&display=swap");
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 
+:root {
+	--text: #212121;
+	--grey-200: #eeeeee;
+	--grey-400: #bdbdbd;
+	--grey-600: #757575;
+	--grey-800: #424242;
+}
+
 body {
+	font-family: "Poppins", sans-serif;
 	font-size: 18px;
 	overflow-x: hidden;
+	color: var(--text);
+	font-weight: 400;
+	background: #fafafa;
 }
 
 section {
 	width: 1000px;
 	max-width: 90vw;
 	margin: auto;
+}
+
+.light-text {
+	color: var(--grey-600);
+}
+
+.medium-text {
+	font-size: 1.1em;
+}
+
+.f-start {
+	align-self: flex-start;
 }
 
 /* Top Navigation */
@@ -28,14 +54,27 @@ section {
 }
 
 .search-location-form {
-	width: 90%;
+	position: relative;
+	width: 93%;
 }
 
 .search-location-input {
-	border: 2px solid black;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: var(--grey-200);
+	color: var(--text);
+	font-size: 0.9em;
 	padding: 15px;
+	padding-left: 60px;
 	border-radius: 30px;
 	width: 100%;
+}
+
+.search-button {
+	position: absolute;
+	left: 20px;
+	top: 16px;
 }
 
 .unit-selector {
@@ -44,11 +83,22 @@ section {
 	flex: 1;
 }
 
-.unit-selector span {
-	border: 2px solid black;
+.unit-selector button {
+	outline: none;
+	border: none;
+	background: var(--grey-200);
+	color: var(--grey-800);
+	font-family: inherit;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin-left: 8px;
 	cursor: pointer;
-	padding: 12px;
+	padding: 15px;
+	width: 50px;
+	height: 50px;
+	font-weight: 900;
+	font-size: 0.9em;
 	border-radius: 100%;
 }
 
@@ -65,24 +115,35 @@ section {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
+	padding: 20px 0px;
+}
+
+.temperature-container {
+	flex: 1;
 }
 
 .temperature-container,
 .min-max-container {
 	display: flex;
-	flex: 1;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-end;
+}
+
+.min-max-container {
+	padding: 0px 10px;
+	flex: 1;
 }
 
 .temperature-container .temperature {
-	font-size: 5em;
+	line-height: 0.9em;
+	font-size: 6em;
+	font-weight: 700;
 }
 
 .min-max {
-	justify-content: center;
+	justify-content: flex-end;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -94,17 +155,22 @@ section {
 	display: flex;
 	align-items: center;
 	height: 100px;
-	flex: 1;
+	width: 150px;
 	max-width: 100%;
 }
 
 .min .left-container,
 .max .left-container {
-	max-width: 50px;
+	width: 50px;
+	min-height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 .min .right-container,
 .max .right-container {
+	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
