@@ -1,0 +1,26 @@
+{
+	"name": "weather-app",
+	"version": "1.0.0",
+	"description": "Weather App Front-End codebase",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack --progress --mode=production",
+		"watch": "webpack --progress --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/canizalesJd/weather-app.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/canizalesJd/weather-app/issues"
+	},
+	"homepage": "https://github.com/canizalesJd/weather-app#readme",
+	"devDependencies": {
+		"webpack": "^5.90.0",
+		"webpack-cli": "^5.1.4"
+	}
+}
