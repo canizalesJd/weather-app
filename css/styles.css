@@ -1,0 +1,211 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 18px;
+	overflow-x: hidden;
+}
+
+section {
+	width: 1000px;
+	max-width: 90vw;
+	margin: auto;
+}
+
+/* Top Navigation */
+
+.top-navigation {
+	padding-top: 20px;
+}
+
+.search-location-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search-location-form {
+	width: 90%;
+}
+
+.search-location-input {
+	border: 2px solid black;
+	padding: 15px;
+	border-radius: 30px;
+	width: 100%;
+}
+
+.unit-selector {
+	display: flex;
+	justify-content: flex-end;
+	flex: 1;
+}
+
+.unit-selector span {
+	border: 2px solid black;
+	margin-left: 8px;
+	cursor: pointer;
+	padding: 12px;
+	border-radius: 100%;
+}
+
+/* General Brief */
+
+.general-brief .top-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.weather-status-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	height: 250px;
+}
+
+.temperature-container,
+.min-max-container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: center;
+}
+
+.temperature-container .temperature {
+	font-size: 5em;
+}
+
+.min-max {
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.min-max .min,
+.min-max .max {
+	display: flex;
+	align-items: center;
+	height: 100px;
+	flex: 1;
+	max-width: 100%;
+}
+
+.min .left-container,
+.max .left-container {
+	max-width: 50px;
+}
+
+.min .right-container,
+.max .right-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+}
+
+/* General Brief - Weather Details */
+
+.weather-details {
+	padding: 10px 0px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	min-width: 100%;
+}
+
+.weather-details-card {
+	border: 2px solid black;
+	display: flex;
+	padding: 10px;
+	min-width: 100px;
+}
+
+.weather-details-card .icon-left {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid red;
+	padding: 5px;
+	width: 40px;
+}
+
+.weather-details-card .card-details {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 10px;
+	justify-content: center;
+}
+
+/* Hourly brief */
+.hourly-brief {
+	padding: 10px 0px;
+}
+
+.hourly-cards-container {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(8, 1fr);
+}
+
+.hourly-card {
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.weather-icon {
+	border: 2px solid red;
+	height: 60px;
+	padding: 8px 0px;
+}
+
+.hour-text {
+	padding-bottom: 5px;
+}
+
+/* Week brief */
+.week-brief {
+	padding: 10px 0px;
+}
+
+.week-cards-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.week-card {
+	padding: 10px;
+	display: flex;
+	border: 2px solid black;
+}
+
+.icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90px;
+	border: 2px solid red;
+}
+
+.week-details-container {
+	flex: 1;
+	padding-left: 10px;
+}

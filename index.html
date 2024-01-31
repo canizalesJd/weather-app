@@ -4,42 +4,71 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Weather App</title>
+		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 	<body>
 		<main>
 			<section class="top-navigation">
 				<div class="search-location-container">
-					<form action="#" class="search-location">
+					<form action="#" class="search-location-form">
 						<input
 							type="text"
 							class="search-location-input"
 							placeholder="Los Angeles, CA" />
 					</form>
 					<div class="unit-selector">
-						<span>C°</span>
-						<span>F°</span>
+						<span class="celcius-button">C°</span>
+						<span class="farenheit-button">F°</span>
 					</div>
 				</div>
 			</section>
 			<section class="general-brief">
-				<div class="weather-status-icon">
-					<img src="" alt="" />
-					Sunny, Rainy, Cloudy...
-				</div>
-				<div class="temperature-container">
-					<span class="temperature">26 °</span>
-					<p class="medium-text dark-text">Clear skies, possible cyclone</p>
-				</div>
-				<div class="min-max-container">
-					<div class="min">Min 23°</div>
-					<div class="max">Max 30°</div>
-					<p class="medium-title temp-sensation">Feels like 25°</p>
+				<div class="top-container">
+					<div class="weather-status-icon">
+						<img src="" alt="" />
+						Sunny, Rainy, Cloudy...
+					</div>
+					<div class="temperature-container">
+						<span class="temperature">26 °</span>
+						<p class="medium-text dark-text">Clear skies, possible cyclone</p>
+					</div>
+					<div class="min-max-container">
+						<div class="min-max">
+							<div class="min">
+								<div class="left-container">
+									<span>Icon</span>
+								</div>
+								<div class="right-container">
+									<p>Min</p>
+									<p>23°</p>
+								</div>
+							</div>
+							<div class="max">
+								<div class="left-container">
+									<span>Icon</span>
+								</div>
+								<div class="right-container">
+									<p>Max</p>
+									<p>30°</p>
+								</div>
+							</div>
+						</div>
+						<p class="medium-title temp-sensation">Feels like 25°</p>
+					</div>
 				</div>
 				<div class="weather-details">
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
+						</div>
+						<div class="card-details">
+							<p class="small-text light-text">Chance of rain</p>
+							<p class="card-text dark-text">0%</p>
+						</div>
+					</div>
+					<div class="weather-details-card">
+						<div class="icon-left">
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">Wind</p>
@@ -48,8 +77,7 @@
 					</div>
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">Sunrise</p>
@@ -58,8 +86,7 @@
 					</div>
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">Sunset</p>
@@ -68,8 +95,7 @@
 					</div>
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">UV Index</p>
@@ -78,8 +104,7 @@
 					</div>
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">Pressure</p>
@@ -88,8 +113,7 @@
 					</div>
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">Humidity</p>
@@ -98,8 +122,7 @@
 					</div>
 					<div class="weather-details-card">
 						<div class="icon-left">
-							<img src="" alt="" />
-							icon
+							<img src="" alt="icon" />
 						</div>
 						<div class="card-details">
 							<p class="small-text light-text">Gusts</p>
@@ -113,38 +136,43 @@
 				<div class="hourly-cards-container">
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 6 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 7 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 8 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 9 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 10 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 11 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 					<div class="hourly-card">
 						<span class="hour-text dark-text"> 12 PM </span>
-						<img src="" alt="" class="weather-icon" />
-						<p class="temp-text dark-text"></p>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
+					</div>
+					<div class="hourly-card">
+						<span class="hour-text dark-text"> 1 AM </span>
+						<img src="" alt="ICON" class="weather-icon" />
+						<p class="temp-text dark-text">25</p>
 					</div>
 				</div>
 			</section>
@@ -153,105 +181,97 @@
 				<div class="week-cards-container">
 					<div class="week-card">
 						<div class="icon-container">
-							<img src="" alt="" />
+							<img src="" alt="icon" />
 						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
-						</div>
-					</div>
-				</div>
-				<div class="week-cards-container">
-					<div class="week-card">
-						<div class="icon-container">
-							<img src="" alt="" />
-						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
+						<div class="week-details-container">
+							<div class="date">
+								<p class="day-name">THU</p>
+								<p class="date">28 JULY</p>
+							</div>
+							<div class="temp-details">
+								<div class="min">24° min</div>
+								<div class="max">34° max</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="week-cards-container">
+
 					<div class="week-card">
 						<div class="icon-container">
-							<img src="" alt="" />
+							<img src="" alt="icon" />
 						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
+						<div class="week-details-container">
+							<div class="date">
+								<p class="day-name">THU</p>
+								<p class="date">28 JULY</p>
+							</div>
+							<div class="temp-details">
+								<div class="min">24° min</div>
+								<div class="max">34° max</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="week-cards-container">
+
 					<div class="week-card">
 						<div class="icon-container">
-							<img src="" alt="" />
+							<img src="" alt="icon" />
 						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
+						<div class="week-details-container">
+							<div class="date">
+								<p class="day-name">THU</p>
+								<p class="date">28 JULY</p>
+							</div>
+							<div class="temp-details">
+								<div class="min">24° min</div>
+								<div class="max">34° max</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="week-cards-container">
+
 					<div class="week-card">
 						<div class="icon-container">
-							<img src="" alt="" />
+							<img src="" alt="icon" />
 						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
+						<div class="week-details-container">
+							<div class="date">
+								<p class="day-name">THU</p>
+								<p class="date">28 JULY</p>
+							</div>
+							<div class="temp-details">
+								<div class="min">24° min</div>
+								<div class="max">34° max</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="week-cards-container">
+
 					<div class="week-card">
 						<div class="icon-container">
-							<img src="" alt="" />
+							<img src="" alt="icon" />
 						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
+						<div class="week-details-container">
+							<div class="date">
+								<p class="day-name">THU</p>
+								<p class="date">28 JULY</p>
+							</div>
+							<div class="temp-details">
+								<div class="min">24° min</div>
+								<div class="max">34° max</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="week-cards-container">
+
 					<div class="week-card">
 						<div class="icon-container">
-							<img src="" alt="" />
+							<img src="" alt="icon" />
 						</div>
-						<div class="date">
-							<p class="day-name">THU</p>
-							<p class="date">28 JULY</p>
-						</div>
-						<div class="temp-details">
-							<div class="min">24° min</div>
-							<div class="max">34° max</div>
+						<div class="week-details-container">
+							<div class="date">
+								<p class="day-name">THU</p>
+								<p class="date">28 JULY</p>
+							</div>
+							<div class="temp-details">
+								<div class="min">24° min</div>
+								<div class="max">34° max</div>
+							</div>
 						</div>
 					</div>
 				</div>
