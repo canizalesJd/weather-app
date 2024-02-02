@@ -45,7 +45,8 @@ const getCurrentWeather = async (locationUrl) => {
 		`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${locationUrl}`
 	);
 	const weather = await response.json();
-	// console.log(weather);
+	console.log(weather);
+	updateWeather(weather);
 	return weather;
 };
 
@@ -56,3 +57,16 @@ clearSearchButton.addEventListener("click", () => {
 	locationsContainer.innerHTML = "";
 	searchLocationInput.focus();
 });
+
+const temperature = document.getElementById("temperature");
+const weatherStatusIcon = document.getElementById("weather-status-icon");
+const weatherDescription = document.getElementById("weather-description");
+const feelsLike = document.getElementById("feels-like");
+
+const updateWeather = async (weather) => {
+	const { temp_c, condition } = weather.current;
+	temperature.innerHTML = `${temp_c}°`;
+	weatherDescription.innerHTML = condition.text;
+	feelsLike.innerHTML = `Feels like ${weather.current.feelslike_c}°`;
+	return weather;
+};
