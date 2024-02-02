@@ -24,14 +24,12 @@ const displayLocations = (locations) => {
 		const locationElement = document.createElement("div");
 		locationElement.classList.add("location-option");
 		locationElement.innerHTML = `
-            <h3>${location.name}, ${location.region}</h3>
+            <h3>${location.name}</h3>
             <p>${location.country}</p>
         `;
 		locationsContainer.appendChild(locationElement);
 		locationElement.addEventListener("click", () => {
-			selectLocation(
-				`${location.name}, ${location.region}, ${location.country}`
-			);
+			selectLocation(`${location.name}, ${location.country}`);
 		});
 	});
 };
