@@ -29,14 +29,24 @@ const displayLocations = (locations) => {
         `;
 		locationsContainer.appendChild(locationElement);
 		locationElement.addEventListener("click", () => {
-			selectLocation(`${location.name}, ${location.country}`);
+			selectLocation(`${location.name}, ${location.country}`, location.url);
 		});
 	});
 };
 
-const selectLocation = async (location) => {
-	searchLocationInput.value = location;
+const selectLocation = (locationName, locationUrl) => {
+	searchLocationInput.value = locationName;
 	locationsContainer.innerHTML = "";
+	getCurrentWeather(locationUrl);
+};
+
+const getCurrentWeather = async (locationUrl) => {
+	const response = await fetch(
+		`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${locationUrl}`
+	);
+	const weather = await response.json();
+	// console.log(weather);
+	return weather;
 };
 
 const clearSearchButton = document.querySelector(".clear-search-button");
