@@ -7,8 +7,9 @@
 }
 
 :root {
-	--text: #212121;
+	--text: #3f3f3f;
 	--grey-200: #eeeeee;
+	--grey-300: #dddddd;
 	--grey-400: #bdbdbd;
 	--grey-600: #757575;
 	--grey-800: #424242;
@@ -85,6 +86,51 @@ section {
 	position: absolute;
 	left: 20px;
 	top: 16px;
+}
+
+.clear-search-button {
+	display: none;
+	position: absolute;
+	cursor: pointer;
+	right: 20px;
+	top: 16px;
+}
+
+.search-options-container {
+	position: absolute;
+	width: 100%;
+	max-width: 90vw;
+}
+
+.location-option {
+	cursor: pointer;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: var(--grey-200);
+	color: var(--text);
+	border: 1px solid var(--grey-300);
+	font-size: 0.9em;
+	padding: 15px;
+	padding-left: 20px;
+	border-radius: 30px;
+	width: 100%;
+}
+
+.location-option:hover {
+	background: var(--grey-300);
+}
+
+.location-option h3 {
+	font-size: 1em;
+	color: var(--text);
+	font-weight: 500;
+}
+
+.location-option p {
+	font-size: 0.9em;
+	font-weight: 600;
+	color: var(--grey-800);
 }
 
 .unit-selector {
@@ -322,4 +368,13 @@ section {
 
 .temp-label {
 	color: var(--grey-800);
+}
+
+/* Utility clases */
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
 }
