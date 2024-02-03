@@ -20,6 +20,7 @@ searchLocationInput.addEventListener("input", (e) => {
 
 const locationsContainer = document.querySelector(".search-options-container");
 const displayLocations = (locations) => {
+	locationsContainer.classList.toggle("show", locations.length > 0);
 	locationsContainer.innerHTML = "";
 	locations.forEach((location) => {
 		const locationElement = document.createElement("div");
@@ -236,4 +237,15 @@ configButton.addEventListener("click", handleConfigButtonClick);
 
 const tempUnit = document.querySelector(".temp-unit");
 const speedUnit = document.querySelector(".speed-unit");
+const themeName = document.querySelector(".theme-name");
 const defaultLocation = document.querySelector(".default-location");
+
+const updateSettings = () => {
+	tempUnit.innerHTML = localStorage.getItem("tempUnit") || "Celcius";
+	speedUnit.innerHTML = localStorage.getItem("speedUnit") || "km/h";
+	themeName.innerHTML = localStorage.getItem("themeName") || "Light";
+	defaultLocation.innerHTML =
+		localStorage.getItem("defaultLocation") || "London";
+};
+
+updateSettings();

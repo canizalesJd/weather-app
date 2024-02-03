@@ -98,6 +98,7 @@ section {
 }
 
 .search-options-container {
+	display: none;
 	margin-top: 10px;
 	background-color: #ffff;
 	overflow-y: scroll;
