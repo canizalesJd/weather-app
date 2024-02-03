@@ -78,6 +78,7 @@ section {
 	font-size: 0.9em;
 	padding: 15px;
 	padding-left: 60px;
+	padding-right: 45px;
 	border-radius: 30px;
 	width: 100%;
 }
@@ -386,4 +387,80 @@ section {
 
 .hide {
 	display: none;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 1060px) {
+	.week-cards-container {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media screen and (max-width: 690px) {
+	.top-container {
+		flex-direction: column;
+		justify-content: center;
+	}
+	.weather-details {
+		grid-template-columns: 1fr 1fr;
+	}
+	.week-cards-container {
+		grid-template-columns: 1fr;
+	}
+	.hourly-cards-container {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media screen and (max-width: 590px) {
+	body {
+		font-size: 17px;
+	}
+	.weather-status-icon {
+		height: 150px;
+		width: 150px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.search-location-form {
+		width: 100%;
+	}
+	.unit-selector {
+		position: fixed;
+		right: 30px;
+		bottom: 30px;
+	}
+	.unit-selector button {
+		background: #445353;
+		color: var(--grey-200);
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.weather-details {
+		min-width: 0px;
+		margin: auto;
+		max-width: 300px;
+		grid-template-columns: 1fr;
+	}
+	.hourly-cards-container {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.min-max-container {
+		align-items: center;
+		justify-content: center;
+	}
+	.min-max .min,
+	.min-max .max {
+		width: 100%;
+	}
+	.week-card {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 }
