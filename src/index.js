@@ -44,6 +44,7 @@ const displayLocations = (locations) => {
 const selectLocation = (locationName, locationUrl) => {
 	searchLocationInput.value = locationName;
 	locationsContainer.innerHTML = "";
+	locationsContainer.classList.remove("show");
 	getCurrentWeather(locationUrl);
 	getForecastWeather(locationUrl);
 };
@@ -235,17 +236,26 @@ const handleConfigButtonClick = () => {
 const configButton = document.querySelector(".config-button");
 configButton.addEventListener("click", handleConfigButtonClick);
 
-const tempUnit = document.querySelector(".temp-unit");
-const speedUnit = document.querySelector(".speed-unit");
-const themeName = document.querySelector(".theme-name");
-const defaultLocation = document.querySelector(".default-location");
+// Settings placeholders
+const tempUnitText = document.querySelector(".temp-unit");
+const speedUnitText = document.querySelector(".speed-unit");
+const themeNameText = document.querySelector(".theme-name");
+const defaultLocationText = document.querySelector(".default-location");
 
 const updateSettings = () => {
-	tempUnit.innerHTML = localStorage.getItem("tempUnit") || "Celcius";
-	speedUnit.innerHTML = localStorage.getItem("speedUnit") || "km/h";
-	themeName.innerHTML = localStorage.getItem("themeName") || "Light";
-	defaultLocation.innerHTML =
-		localStorage.getItem("defaultLocation") || "London";
+	tempUnitText.innerHTML = localStorage.getItem("tempUnit") || "Celcius";
+	speedUnitText.innerHTML = localStorage.getItem("speedUnit") || "km/h";
+	themeNameText.innerHTML = localStorage.getItem("themeName") || "Light";
+	defaultLocationText.innerHTML =
+		localStorage.getItem("defaultLocation") || "San Jose";
 };
 
 updateSettings();
+
+// Render the default location by default
+
+const defaultLocation =
+	localStorage.getItem("defaultLocation") || "San Jose, CR";
+if (defaultLocation) {
+	selectLocation(defaultLocation, defaultLocation);
+}
