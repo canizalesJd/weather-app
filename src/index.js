@@ -228,3 +228,6 @@ const handleConfigButtonClick = () => {
 
 const configButton = document.querySelector(".config-button");
 configButton.addEventListener("click", handleConfigButtonClick);
+
+const unitName = document.querySelector(".unit-name");
+const speedUnit = document.querySelector(".speed-unit-button");
