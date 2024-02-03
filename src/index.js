@@ -47,11 +47,6 @@ const selectLocation = (locationName, locationUrl) => {
 	locationsContainer.classList.remove("show");
 	getCurrentWeather(locationUrl);
 	getForecastWeather(locationUrl);
-	const currentLocation = {
-		name: locationName,
-		url: locationUrl,
-	};
-	localStorage.setItem("currentLocation", JSON.stringify(currentLocation));
 };
 
 const getCurrentWeather = async (locationUrl) => {
@@ -301,13 +296,8 @@ const updateSettings = () => {
 	speedUnitText.innerHTML = localStorage.getItem("speedUnit") || "km/h";
 	themeNameText.innerHTML = localStorage.getItem("themeName") || "light";
 	defaultLocationText.innerHTML =
-		localStorage.getItem("defaultLocation") || "San Jose, CR";
-	const currentLocation = JSON.parse(localStorage.getItem("currentLocation"));
-	if (currentLocation) {
-		selectLocation(currentLocation.name, currentLocation.url);
-	} else {
-		selectLocation(defaultLocation, defaultLocation);
-	}
+		localStorage.getItem("defaultLocation") || "San Jose";
+	selectLocation(defaultLocation, defaultLocation);
 };
 
 const handleTempUnitClick = () => {
