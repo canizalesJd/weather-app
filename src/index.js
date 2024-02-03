@@ -236,3 +236,4 @@ configButton.addEventListener("click", handleConfigButtonClick);
 
 const tempUnit = document.querySelector(".temp-unit");
 const speedUnit = document.querySelector(".speed-unit");
+const defaultLocation = document.querySelector(".default-location");
