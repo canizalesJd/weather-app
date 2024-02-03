@@ -178,6 +178,7 @@ section {
 }
 
 #weather-status-icon {
+	max-height: 100%;
 	user-select: none;
 	-webkit-user-drag: none;
 }
@@ -344,6 +345,10 @@ section {
 	justify-content: center;
 	align-items: center;
 	width: 90px;
+}
+
+.icon-container img {
+	max-height: 100%;
 }
 
 .week-details-container {
