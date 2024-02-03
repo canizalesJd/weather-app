@@ -434,6 +434,21 @@ section {
 	background: var(--grey-200);
 }
 
+.temp-unit {
+	text-transform: capitalize;
+}
+
+.location-settings-option-button {
+	max-width: 100%;
+	overflow: hidden;
+}
+
+.default-location {
+	padding-right: 20px;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
 .icon-container {
 	max-width: fit-content;
 	left: 0;
