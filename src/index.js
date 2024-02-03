@@ -1,4 +1,4 @@
-import { getHours } from "date-fns";
+import { getHours, format } from "date-fns";
 
 const apiKey = "f9f500425848431297e232002243001";
 
@@ -91,6 +91,8 @@ const getForecastWeather = async (
 	);
 	const forecast = await response.json();
 	updateGeneralForecast(forecast);
+	updateHourlyForecast(forecast);
+	updateWeekForecast(forecast);
 };
 
 const minTemp = document.getElementById("min-temp");
@@ -114,7 +116,6 @@ const updateGeneralForecast = (forecast) => {
 	uvIndex.innerHTML = `${currentDayForecast.day.uv}`;
 	humidity.innerHTML = `${currentDayForecast.day.avghumidity}%`;
 	gusts.innerHTML = `${currentDayForecast.day.maxwind_kph} km/h`;
-	updateHourlyForecast(forecast);
 };
 
 const hourlyForecastContainer = document.querySelector(
@@ -134,16 +135,16 @@ const getIconUrl = (icon) => {
 	return `assets/icons/${iconFolder}/${iconNumber}.svg`;
 };
 
-const updateHourlyForecast = (forecast) => {
+const updateHourlyForecast = (weather) => {
 	hourlyForecastContainer.innerHTML = "";
-	const localTime = forecast.location.localtime;
+	const localTime = weather.location.localtime;
 	let localHour = getHours(new Date(localTime));
 	if (localHour + 8 > 23) localHour = 16;
 	for (let i = 0; i < 8; i++) {
 		if (localHour > 23) {
 			return;
 		}
-		const { condition } = forecast.forecast.forecastday[0].hour[localHour];
+		const { condition } = weather.forecast.forecastday[0].hour[localHour];
 		const iconUrl = getIconUrl(condition.icon);
 		const hourlyCard = document.createElement("div");
 		hourlyCard.classList.add("hourly-card");
@@ -161,4 +162,61 @@ const updateHourlyForecast = (forecast) => {
 		hourlyForecastContainer.appendChild(hourlyCard);
 		localHour++;
 	}
+};
+
+const weekForecastContainer = document.querySelector(".week-cards-container");
+const updateWeekForecast = (weather) => {
+	weekForecastContainer.innerHTML = "";
+	const { forecastday } = weather.forecast;
+	forecastday.forEach((day) => {
+		const weekCard = document.createElement("div");
+		weekCard.classList.add("week-card");
+		const iconContainer = document.createElement("div");
+		iconContainer.classList.add("icon-container");
+		const icon = document.createElement("img");
+		icon.classList.add("week-brief-card-icon");
+		icon.src = getIconUrl(day.day.condition.icon);
+		iconContainer.appendChild(icon);
+		weekCard.appendChild(iconContainer);
+		weekForecastContainer.appendChild(weekCard);
+		const weekDetailsContainer = document.createElement("div");
+		weekDetailsContainer.classList.add("week-details-container");
+		weekCard.appendChild(weekDetailsContainer);
+		const date = document.createElement("div");
+		date.classList.add("date");
+		const dayName = document.createElement("p");
+		dayName.classList.add("day-name");
+		dayName.innerHTML = format(new Date(day.date_epoch * 1000), "iii");
+		const dateText = document.createElement("p");
+		dateText.classList.add("date");
+		dateText.innerHTML = format(new Date(day.date_epoch * 1000), "dd MMM");
+		const tempDetails = document.createElement("div");
+		tempDetails.classList.add("temp-details");
+		const min = document.createElement("div");
+		min.classList.add("min");
+		const minTemp = document.createElement("p");
+		minTemp.classList.add("temp");
+		minTemp.innerHTML = `${day.day.mintemp_c}°`;
+		const minTempLabel = document.createElement("p");
+		minTempLabel.classList.add("temp-label");
+		minTempLabel.innerHTML = "min";
+		min.appendChild(minTemp);
+		min.appendChild(minTempLabel);
+		const max = document.createElement("div");
+		max.classList.add("max");
+		const maxTemp = document.createElement("p");
+		maxTemp.classList.add("temp");
+		maxTemp.innerHTML = `${day.day.maxtemp_c}°`;
+		const maxTempLabel = document.createElement("p");
+		maxTempLabel.classList.add("temp-label");
+		maxTempLabel.innerHTML = "max";
+		max.appendChild(maxTemp);
+		max.appendChild(maxTempLabel);
+		tempDetails.appendChild(min);
+		tempDetails.appendChild(max);
+		weekDetailsContainer.appendChild(date);
+		date.appendChild(dayName);
+		date.appendChild(dateText);
+		weekDetailsContainer.appendChild(tempDetails);
+	});
 };
