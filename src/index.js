@@ -81,14 +81,30 @@ const updateCurrentWeatherIcon = (weather) => {
 
 const updateCurrentWeather = async (weather) => {
 	const tempUnit = localStorage.getItem("tempUnit");
-	const { temp_c, temp_f, condition, pressure_mb, feelslike_c, feelslike_f } =
-		weather.current;
+	const speedUnit = localStorage.getItem("speedUnit");
+
+	const {
+		temp_c,
+		temp_f,
+		condition,
+		pressure_mb,
+		feelslike_c,
+		feelslike_f,
+		gust_kph,
+		gust_mph,
+		wind_kph,
+		wind_mph,
+	} = weather.current;
 	temperature.innerHTML = `${tempUnit === "celcius" ? temp_c : temp_f}°`;
 	weatherDescription.innerHTML = condition.text;
 	feelsLike.innerHTML = `Feels like ${
 		tempUnit === "celcius" ? feelslike_c : feelslike_f
 	}°`;
 	pressure.innerHTML = `${pressure_mb} mb`;
+	gusts.innerHTML = `${
+		speedUnit === "km/h" ? gust_kph : gust_mph
+	} ${speedUnit}`;
+	wind.innerHTML = `${speedUnit === "km/h" ? wind_kph : wind_mph} ${speedUnit}`;
 };
 
 const getForecastWeather = async (
@@ -130,12 +146,10 @@ const updateGeneralForecast = (forecast) => {
 			: currentDayForecast.day.maxtemp_f
 	}°`;
 	chanceOfRain.innerHTML = `${currentDayForecast.day.daily_chance_of_rain}%`;
-	wind.innerHTML = `${currentDayForecast.day.maxwind_kph} km/h`;
 	sunrise.innerHTML = `${currentDayForecast.astro.sunrise}`;
 	sunset.innerHTML = `${currentDayForecast.astro.sunset}`;
 	uvIndex.innerHTML = `${currentDayForecast.day.uv}`;
 	humidity.innerHTML = `${currentDayForecast.day.avghumidity}%`;
-	gusts.innerHTML = `${currentDayForecast.day.maxwind_kph} km/h`;
 };
 
 const hourlyForecastContainer = document.querySelector(
@@ -295,6 +309,18 @@ tempUnitSelector.addEventListener("click", handleTempUnitClick);
 
 const selectTempUnit = (unit) => {
 	localStorage.setItem("tempUnit", unit);
+	updateSettings();
+};
+
+const handleSpeedUnitClick = () => {
+	const unit = document.querySelector(".speed-unit").innerHTML;
+	unit === "km/h" ? selectSpeedUnit("mph") : selectSpeedUnit("km/h");
+};
+const speedUnitSelector = document.querySelector(".speed-unit-selector");
+speedUnitSelector.addEventListener("click", handleSpeedUnitClick);
+
+const selectSpeedUnit = (unit) => {
+	localStorage.setItem("speedUnit", unit);
 	updateSettings();
 };
 
