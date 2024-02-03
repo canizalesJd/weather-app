@@ -26,7 +26,7 @@ const displayLocations = (locations) => {
 		locationElement.classList.add("location-option");
 		locationElement.innerHTML = `
             <h3>${location.name}</h3>
-            <p>${location.country}</p>
+            <p>${location.region}, ${location.country}</p>
         `;
 		locationsContainer.appendChild(locationElement);
 		locationElement.addEventListener("click", () => {
