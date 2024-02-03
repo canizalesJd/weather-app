@@ -1,4 +1,5 @@
-// Search location input
+import { getHours } from "date-fns";
+
 const apiKey = "f9f500425848431297e232002243001";
 
 const searchLocation = async (searchTerm) => {
@@ -67,9 +68,7 @@ const pressure = document.getElementById("pressure");
 
 const updateCurrentWeatherIcon = (weather) => {
 	const { condition } = weather.current;
-	const iconFolder = condition.icon.match(/day|night/g)[0];
-	const iconNumber = condition.icon.match(/\d+/g)[2];
-	const iconUrl = `assets/icons/${iconFolder}/${iconNumber}.svg`;
+	const iconUrl = getIconUrl(condition.icon);
 	weatherStatusIcon.src = iconUrl;
 };
 
@@ -91,7 +90,7 @@ const getForecastWeather = async (
 		`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${locationUrl}&days=${days}&aqi=${airQuality}&alerts=${alerts}`
 	);
 	const forecast = await response.json();
-	updateForecast(forecast);
+	updateGeneralForecast(forecast);
 };
 
 const minTemp = document.getElementById("min-temp");
@@ -104,7 +103,7 @@ const uvIndex = document.getElementById("uv-index");
 const humidity = document.getElementById("humidity");
 const gusts = document.getElementById("gusts");
 
-const updateForecast = (forecast) => {
+const updateGeneralForecast = (forecast) => {
 	const currentDayForecast = forecast.forecast.forecastday[0];
 	minTemp.innerHTML = `${currentDayForecast.day.mintemp_c}°`;
 	maxTemp.innerHTML = `${currentDayForecast.day.maxtemp_c}°`;
@@ -115,4 +114,51 @@ const updateForecast = (forecast) => {
 	uvIndex.innerHTML = `${currentDayForecast.day.uv}`;
 	humidity.innerHTML = `${currentDayForecast.day.avghumidity}%`;
 	gusts.innerHTML = `${currentDayForecast.day.maxwind_kph} km/h`;
+	updateHourlyForecast(forecast);
+};
+
+const hourlyForecastContainer = document.querySelector(
+	".hourly-cards-container"
+);
+
+const formatHour = (hour) => {
+	const amOrPm = hour < 12 ? "AM" : "PM";
+	let hourNumber = hour < 12 ? hour : hour - 12;
+	hourNumber === 0 ? (hourNumber = 12) : null;
+	return `${hourNumber} ${amOrPm}`;
+};
+
+const getIconUrl = (icon) => {
+	const iconFolder = icon.match(/day|night/g)[0];
+	const iconNumber = icon.match(/\d+/g)[2];
+	return `assets/icons/${iconFolder}/${iconNumber}.svg`;
+};
+
+const updateHourlyForecast = (forecast) => {
+	hourlyForecastContainer.innerHTML = "";
+	const localTime = forecast.location.localtime;
+	let localHour = getHours(new Date(localTime));
+	if (localHour + 8 > 23) localHour = 16;
+	for (let i = 0; i < 8; i++) {
+		if (localHour > 23) {
+			return;
+		}
+		const { condition } = forecast.forecast.forecastday[0].hour[localHour];
+		const iconUrl = getIconUrl(condition.icon);
+		const hourlyCard = document.createElement("div");
+		hourlyCard.classList.add("hourly-card");
+		const hourText = document.createElement("span");
+		hourText.classList.add("hour-text", "small-text", "dark-text");
+		hourText.innerHTML = formatHour(parseInt(localHour));
+		const weatherIcon = document.createElement("img");
+		weatherIcon.classList.add("weather-icon");
+		weatherIcon.src = iconUrl;
+		const tempText = document.createElement("p");
+		tempText.classList.add("temp-text", "dark-text");
+		hourlyCard.appendChild(hourText);
+		hourlyCard.appendChild(weatherIcon);
+		hourlyCard.appendChild(tempText);
+		hourlyForecastContainer.appendChild(hourlyCard);
+		localHour++;
+	}
 };
