@@ -220,3 +220,11 @@ const updateWeekForecast = (weather) => {
 		weekDetailsContainer.appendChild(tempDetails);
 	});
 };
+
+const settingsBox = document.querySelector(".setting-box");
+const handleConfigButtonClick = () => {
+	settingsBox.classList.toggle("hide");
+};
+
+const configButton = document.querySelector(".config-button");
+configButton.addEventListener("click", handleConfigButtonClick);
