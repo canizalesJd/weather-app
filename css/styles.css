@@ -497,6 +497,18 @@ body.dark-theme .temp-sensation {
 	color: #b0afaf;
 }
 
+body.dark-theme .location-option {
+	background: #373737;
+}
+
+body.dark-theme .location-option p {
+	color: #cacaca;
+}
+
+body.dark-theme .location-option h3 {
+	color: #fafafa;
+}
+
 body.dark-theme .config-button {
 	background: #373737;
 }
@@ -519,6 +531,10 @@ body.dark-theme .setting-box button:hover {
 
 body.dark-theme .min-max svg {
 	color: #fafafa;
+}
+
+body.dark-theme .clear-search-button {
+	color: #b0afaf;
 }
 
 /* Responsiveness */
