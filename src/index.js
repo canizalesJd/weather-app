@@ -303,6 +303,8 @@ const updateSettings = () => {
 	themeNameText.innerHTML = localStorage.getItem("themeName") || "light";
 	defaultLocationText.innerHTML =
 		localStorage.getItem("defaultLocation") || "San Jose, CR";
+	const themeName = localStorage.getItem("themeName");
+	selectTheme(themeName);
 };
 
 const handleTempUnitClick = () => {
@@ -336,6 +338,39 @@ const selectSpeedUnit = (unit) => {
 		: localStorage.setItem("currentLocation", "San Jose, CR");
 	selectLocation(currentLocation, currentLocation);
 };
+
+const selectTheme = (theme) => {
+	const body = document.querySelector("body");
+	const themeNameText = document.querySelector(".theme-name");
+	localStorage.setItem("themeName", theme);
+	if (theme === "light") {
+		themeNameText.innerHTML = "light";
+		body.classList.remove("dark-theme");
+		themeIconPath.setAttribute("d", lightIconPath);
+	}
+	if (theme === "dark") {
+		body.classList.add("dark-theme");
+		themeIconPath.setAttribute("d", darkIconPath);
+		themeNameText.innerHTML = "dark";
+	}
+};
+
+const darkIconPath =
+	"M21.64 13a1 1 0 0 0-1.05-.14a8.05 8.05 0 0 1-3.37.73a8.15 8.15 0 0 1-8.14-8.1a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69a1 1 0 0 0-.36-1.05m-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14a9.79 9.79 0 0 0 2.1-.22a8.11 8.11 0 0 1-7.18 4.32Z";
+
+const lightIconPath =
+	"M12 2c.41 0 .75.34.75.75v1.5a.75.75 0 01-1.5 0v-1.5c0-.41.34-.75.75-.75zm0 15a5 5 0 100-10 5 5 0 000 10zm0-1.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7zm9.25-2.75a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5h1.5zM12 19c.41 0 .75.34.75.75v1.5a.75.75 0 01-1.5 0v-1.5c0-.41.34-.75.75-.75zm-7.75-6.25a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5h1.5zm-.03-8.53c.3-.3.77-.3 1.06 0l1.5 1.5a.75.75 0 01-1.06 1.06l-1.5-1.5a.75.75 0 010-1.06zm1.06 15.56a.75.75 0 11-1.06-1.06l1.5-1.5a.75.75 0 111.06 1.06l-1.5 1.5zm14.5-15.56a.75.75 0 00-1.06 0l-1.5 1.5a.75.75 0 001.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06zm-1.06 15.56a.75.75 0 101.06-1.06l-1.5-1.5a.75.75 0 10-1.06 1.06l1.5 1.5z";
+
+const themeIcon = document.querySelector(".theme-icon");
+const themeIconPath = themeIcon.querySelector("path");
+
+const handleThemeNameClick = () => {
+	const theme = document.querySelector(".theme-name").innerHTML;
+	theme === "light" ? selectTheme("dark") : selectTheme("light");
+};
+
+const changeThemeButton = document.querySelector(".theme-selector");
+changeThemeButton.addEventListener("click", handleThemeNameClick);
 
 updateSettings();
 if (!defaultLocation) {
