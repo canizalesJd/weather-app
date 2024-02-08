@@ -47,6 +47,8 @@ const selectLocation = (locationName, locationUrl) => {
 	locationsContainer.classList.remove("show");
 	getCurrentWeather(locationUrl);
 	getForecastWeather(locationUrl);
+	// Setting current location
+	localStorage.setItem("currentLocation", locationName);
 };
 
 const getCurrentWeather = async (locationUrl) => {
@@ -291,13 +293,16 @@ const defaultLocation = localStorage.getItem("defaultLocation")
 	? localStorage.getItem("defaultLocation")
 	: localStorage.setItem("defaultLocation", "San Jose, CR");
 
+const currentLocation = localStorage.getItem("currentLocation")
+	? localStorage.getItem("currentLocation")
+	: localStorage.setItem("currentLocation", "San Jose, CR");
+
 const updateSettings = () => {
 	tempUnitText.innerHTML = localStorage.getItem("tempUnit") || "celcius";
 	speedUnitText.innerHTML = localStorage.getItem("speedUnit") || "km/h";
 	themeNameText.innerHTML = localStorage.getItem("themeName") || "light";
 	defaultLocationText.innerHTML =
-		localStorage.getItem("defaultLocation") || "San Jose";
-	selectLocation(defaultLocation, defaultLocation);
+		localStorage.getItem("defaultLocation") || "San Jose, CR";
 };
 
 const handleTempUnitClick = () => {
@@ -310,6 +315,10 @@ tempUnitSelector.addEventListener("click", handleTempUnitClick);
 const selectTempUnit = (unit) => {
 	localStorage.setItem("tempUnit", unit);
 	updateSettings();
+	const currentLocation = localStorage.getItem("currentLocation")
+		? localStorage.getItem("currentLocation")
+		: localStorage.setItem("currentLocation", "San Jose, CR");
+	selectLocation(currentLocation, currentLocation);
 };
 
 const handleSpeedUnitClick = () => {
@@ -322,6 +331,15 @@ speedUnitSelector.addEventListener("click", handleSpeedUnitClick);
 const selectSpeedUnit = (unit) => {
 	localStorage.setItem("speedUnit", unit);
 	updateSettings();
+	const currentLocation = localStorage.getItem("currentLocation")
+		? localStorage.getItem("currentLocation")
+		: localStorage.setItem("currentLocation", "San Jose, CR");
+	selectLocation(currentLocation, currentLocation);
 };
 
 updateSettings();
+if (!defaultLocation) {
+	selectLocation("San Jose, CR", "San Jose, CR");
+} else {
+	selectLocation(defaultLocation, defaultLocation);
+}
