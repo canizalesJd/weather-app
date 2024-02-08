@@ -45,6 +45,7 @@ const selectLocation = (locationName, locationUrl) => {
 	searchLocationInput.value = locationName;
 	locationsContainer.innerHTML = "";
 	locationsContainer.classList.remove("show");
+	clearSearchButton.classList.add("show");
 	getCurrentWeather(locationUrl);
 	getForecastWeather(locationUrl);
 	// Setting current location
@@ -66,7 +67,7 @@ const clearSearchButton = document.querySelector(".clear-search-button");
 clearSearchButton.addEventListener("click", () => {
 	searchLocationInput.value = "";
 	locationsContainer.innerHTML = "";
-	searchLocationInput.focus();
+	clearSearchButton.classList.remove("show");
 });
 
 const temperature = document.getElementById("temperature");

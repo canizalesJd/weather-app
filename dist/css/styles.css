@@ -513,6 +513,10 @@ body.dark-theme .config-button {
 	background: #373737;
 }
 
+body.dark-theme .config-button:hover {
+	background: #424141;
+}
+
 body.dark-theme .config-icon {
 	color: #fafafa;
 }
