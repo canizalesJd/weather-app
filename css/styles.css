@@ -30,6 +30,10 @@ section {
 	margin: auto;
 }
 
+.text-center {
+	text-align: center;
+}
+
 .light-text {
 	color: var(--grey-600);
 }
@@ -101,7 +105,7 @@ section {
 	display: none;
 	margin-top: 10px;
 	background-color: #ffff;
-	overflow-y: scroll;
+	overflow-y: auto;
 	position: absolute;
 	width: 100%;
 	max-height: 250px;
@@ -461,11 +465,15 @@ section {
 
 /* Utility clases */
 .show {
-	display: block;
+	display: block !important;
 }
 
 .hide {
-	display: none;
+	display: none !important;
+}
+
+.mt-10 {
+	margin-top: 10px;
 }
 
 /* Dark Mode */
@@ -539,6 +547,131 @@ body.dark-theme .min-max svg {
 
 body.dark-theme .clear-search-button {
 	color: #b0afaf;
+}
+
+/* Location Modal */
+.location-modal-container {
+	position: absolute;
+	min-width: 100vw;
+	min-height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgb(0, 0, 0, 0.25);
+}
+
+.location-modal {
+	position: relative;
+	width: 350px;
+	max-width: 95vw;
+	min-height: 300px;
+	padding: 20px;
+	background: #fafafa;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.close-location-modal-button {
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: #dc2342;
+}
+
+.location-modal-title {
+	padding: 10px 0px;
+}
+
+.current-location-display {
+	display: flex;
+	width: 100%;
+}
+
+.current-location,
+.pinned-location {
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: var(--grey-200);
+	color: var(--text);
+	font-size: 0.9em;
+	padding: 10px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.current-location-label,
+.pinned-location-label,
+.saved-location-label {
+	font-size: 0.8em;
+	font-weight: 600;
+	color: var(--grey-800);
+}
+
+.location-modal button {
+	padding: 5px;
+	margin: 0px 2px;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--grey-800);
+	cursor: pointer;
+}
+
+.action-buttons-container {
+	display: flex;
+	margin-top: 28px;
+}
+
+.save-location-button:hover {
+	transition: 300ms;
+	color: #d21f3c;
+}
+
+.set-default-location-button:hover {
+	transition: 300ms;
+	color: #1fd288;
+}
+
+.saved-locations-container {
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.saved-location {
+	cursor: pointer;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	background: #ffff;
+	color: var(--text);
+	font-size: 0.9em;
+	padding: 15px;
+	padding-left: 20px;
+	width: 100%;
+	border-radius: 8px;
+	position: relative;
+}
+
+.saved-location:hover {
+	background: var(--grey-200);
+}
+
+.saved-locations-container p {
+	font-size: 0.9em;
+	font-weight: 600;
+	color: var(--grey-800);
+	padding-right: 20px;
+}
+
+.remove-saved-location-button {
+	position: absolute;
+	cursor: pointer;
+	right: 20px;
+	top: 16px;
 }
 
 /* Responsiveness */
