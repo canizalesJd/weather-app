@@ -275,7 +275,6 @@ configButton.addEventListener("click", handleConfigButtonClick);
 const tempUnitText = document.querySelector(".temp-unit");
 const speedUnitText = document.querySelector(".speed-unit");
 const themeNameText = document.querySelector(".theme-name");
-const defaultLocationText = document.querySelector(".default-location");
 
 // Getting default values
 const tempUnit = localStorage.getItem("tempUnit")
@@ -302,8 +301,6 @@ const updateSettings = () => {
 	tempUnitText.innerHTML = localStorage.getItem("tempUnit") || "celcius";
 	speedUnitText.innerHTML = localStorage.getItem("speedUnit") || "km/h";
 	themeNameText.innerHTML = localStorage.getItem("themeName") || "light";
-	defaultLocationText.innerHTML =
-		localStorage.getItem("defaultLocation") || "San Jose, CR";
 	const themeName = localStorage.getItem("themeName");
 	selectTheme(themeName);
 };
@@ -372,6 +369,24 @@ const handleThemeNameClick = () => {
 
 const changeThemeButton = document.querySelector(".theme-selector");
 changeThemeButton.addEventListener("click", handleThemeNameClick);
+
+const locationModal = document.querySelector(".location-modal-container");
+const locationSelectorButton = document.querySelector(".location-selector");
+const handleLocationSelectorClick = () => {
+	locationModal.classList.toggle("hide");
+};
+locationSelectorButton.addEventListener("click", handleLocationSelectorClick);
+
+const closeModalButton = document.querySelector(".close-location-modal-button");
+const handleLocationModalClose = () => {
+	locationModal.classList.add("hide");
+};
+closeModalButton.addEventListener("click", handleLocationModalClose);
+window.addEventListener("click", (e) => {
+	if (e.target === locationModal) {
+		handleLocationModalClose();
+	}
+});
 
 updateSettings();
 if (!defaultLocation) {
