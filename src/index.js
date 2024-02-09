@@ -41,6 +41,7 @@ const displayLocations = (locations) => {
 	});
 };
 
+const loadingScreen = document.querySelector(".loader");
 const selectLocation = (locationName, locationUrl) => {
 	const currentLocationInput = document.querySelector(".current-location");
 	currentLocationInput.value = locationName;
@@ -61,6 +62,7 @@ const getCurrentWeather = async (locationUrl) => {
 	const weather = await response.json();
 	updateCurrentWeather(weather);
 	updateCurrentWeatherIcon(weather);
+	loadingScreen.classList.add("hide");
 	return weather;
 };
 
