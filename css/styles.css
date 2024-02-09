@@ -549,6 +549,40 @@ body.dark-theme .clear-search-button {
 	color: #b0afaf;
 }
 
+body.dark-theme label {
+	color: #cecece;
+}
+
+body.dark-theme .location-modal {
+	background: #272727;
+}
+
+body.dark-theme .save-location-button,
+body.dark-theme .set-default-location-button {
+	color: #a4a3a3;
+}
+
+body.dark-theme .save-location-button:hover {
+	transition: 300ms;
+	color: #d21f3c;
+}
+
+body.dark-theme .set-default-location-button:hover {
+	transition: 300ms;
+	color: #1fd288;
+}
+
+body.dark-theme .current-location,
+body.dark-theme .pinned-location,
+body.dark-theme .saved-location {
+	background: #373737;
+	color: #fafafa;
+}
+
+body.dark-theme .saved-location p {
+	color: #fafafa;
+}
+
 /* Location Modal */
 .location-modal-container {
 	position: absolute;
