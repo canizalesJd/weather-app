@@ -598,6 +598,7 @@ body.dark-theme .clear-search-button {
 	background: var(--grey-200);
 	color: var(--text);
 	font-size: 0.9em;
+	font-weight: 500;
 	padding: 10px;
 	width: 100%;
 	border-radius: 10px;
