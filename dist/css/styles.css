@@ -583,6 +583,10 @@ body.dark-theme .saved-location p {
 	color: #fafafa;
 }
 
+body.dark-theme .saved-location svg {
+	color: #fafafa;
+}
+
 /* Location Modal */
 .location-modal-container {
 	position: absolute;
