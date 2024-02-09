@@ -587,6 +587,15 @@ body.dark-theme .saved-location svg {
 	color: #fafafa;
 }
 
+body.dark-theme .loader {
+	background: #2c2c2c;
+	color: #fafafa;
+}
+
+body.dark-theme .loader-image {
+	background: url(../assets/icons/night/113.svg);
+}
+
 /* Location Modal */
 .location-modal-container {
 	position: absolute;
@@ -711,6 +720,27 @@ body.dark-theme .saved-location svg {
 	cursor: pointer;
 	right: 20px;
 	top: 16px;
+}
+
+/* Loader screen */
+.loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100vw;
+	min-height: 100vh;
+	background: #fafafa;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+}
+
+.loader-image {
+	height: 200px;
+	width: 200px;
+	background: url(../assets/icons/day/113.svg);
 }
 
 /* Responsiveness */
