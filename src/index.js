@@ -456,6 +456,18 @@ const deleteSavedLocation = (index) => {
 	renderSavedLocations();
 };
 
+const setDefaultLocationButton = document.querySelector(
+	".set-default-location-button"
+);
+const handlePinLocationClick = () => {
+	const pinnedLocation = document.querySelector(".pinned-location");
+	const currentLocation = document.querySelector(".current-location");
+	localStorage.setItem("defaultLocation", currentLocation.value);
+	pinnedLocation.value = localStorage.getItem("defaultLocation");
+	localStorage.setItem("defaultLocation", pinnedLocation.value);
+};
+setDefaultLocationButton.addEventListener("click", handlePinLocationClick);
+
 updateSettings();
 if (!defaultLocation) {
 	selectLocation("San Jose, CR", "San Jose, CR");
