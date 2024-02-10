@@ -118,6 +118,7 @@ const updateCurrentWeather = async (weather) => {
 		gust_mph,
 		wind_kph,
 		wind_mph,
+		wind_degree,
 	} = weather.current;
 	temperature.innerHTML = `${tempUnit === "celcius" ? temp_c : temp_f}°`;
 	weatherDescription.innerHTML = condition.text;
@@ -129,6 +130,9 @@ const updateCurrentWeather = async (weather) => {
 		speedUnit === "km/h" ? gust_kph : gust_mph
 	} ${speedUnit}`;
 	wind.innerHTML = `${speedUnit === "km/h" ? wind_kph : wind_mph} ${speedUnit}`;
+	// rotate windIcon
+	const windIcon = document.querySelector(".wind-icon");
+	windIcon.style.transform = `rotate(${wind_degree}deg)`;
 };
 
 const getForecastWeather = async (
