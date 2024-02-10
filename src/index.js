@@ -202,22 +202,26 @@ const updateHourlyForecast = (weather) => {
 		if (localHour > 23) {
 			return;
 		}
-		const { condition } = weather.forecast.forecastday[0].hour[localHour];
-		const iconUrl = getIconUrl(condition.icon);
-		const hourlyCard = document.createElement("div");
-		hourlyCard.classList.add("hourly-card");
-		const hourText = document.createElement("span");
-		hourText.classList.add("hour-text", "small-text", "dark-text");
-		hourText.innerHTML = formatHour(parseInt(localHour));
-		const weatherIcon = document.createElement("img");
-		weatherIcon.classList.add("weather-icon");
-		weatherIcon.src = iconUrl;
-		const tempText = document.createElement("p");
-		tempText.classList.add("temp-text", "dark-text");
-		hourlyCard.appendChild(hourText);
-		hourlyCard.appendChild(weatherIcon);
-		hourlyCard.appendChild(tempText);
-		hourlyForecastContainer.appendChild(hourlyCard);
+		// Check if the data exists and has the expected structure
+		const hourData = weather.forecast.forecastday[0].hour[localHour];
+		if (hourData && hourData.condition) {
+			const { condition } = hourData;
+			const iconUrl = getIconUrl(condition.icon);
+			const hourlyCard = document.createElement("div");
+			hourlyCard.classList.add("hourly-card");
+			const hourText = document.createElement("span");
+			hourText.classList.add("hour-text", "small-text", "dark-text");
+			hourText.innerHTML = formatHour(parseInt(localHour));
+			const weatherIcon = document.createElement("img");
+			weatherIcon.classList.add("weather-icon");
+			weatherIcon.src = iconUrl;
+			const tempText = document.createElement("p");
+			tempText.classList.add("temp-text", "dark-text");
+			hourlyCard.appendChild(hourText);
+			hourlyCard.appendChild(weatherIcon);
+			hourlyCard.appendChild(tempText);
+			hourlyForecastContainer.appendChild(hourlyCard);
+		}
 		localHour++;
 	}
 };
@@ -228,59 +232,62 @@ const updateWeekForecast = (weather) => {
 	weekForecastContainer.innerHTML = "";
 	const { forecastday } = weather.forecast;
 	forecastday.forEach((day) => {
-		const weekCard = document.createElement("div");
-		weekCard.classList.add("week-card");
-		const iconContainer = document.createElement("div");
-		iconContainer.classList.add("icon-container");
-		const icon = document.createElement("img");
-		icon.classList.add("week-brief-card-icon");
-		icon.src = getIconUrl(day.day.condition.icon);
-		iconContainer.appendChild(icon);
-		weekCard.appendChild(iconContainer);
-		weekForecastContainer.appendChild(weekCard);
-		const weekDetailsContainer = document.createElement("div");
-		weekDetailsContainer.classList.add("week-details-container");
-		weekCard.appendChild(weekDetailsContainer);
-		const date = document.createElement("div");
-		date.classList.add("date");
-		const dayName = document.createElement("p");
-		dayName.classList.add("day-name");
-		dayName.innerHTML = format(new Date(day.date_epoch * 1000), "iii");
-		const dateText = document.createElement("p");
-		dateText.classList.add("date");
-		dateText.innerHTML = format(new Date(day.date_epoch * 1000), "dd MMM");
-		const tempDetails = document.createElement("div");
-		tempDetails.classList.add("temp-details");
-		const min = document.createElement("div");
-		min.classList.add("min");
-		const minTemp = document.createElement("p");
-		minTemp.classList.add("temp");
-		minTemp.innerHTML = `${
-			tempUnit === "celcius" ? day.day.mintemp_c : day.day.mintemp_f
-		}°`;
-		const minTempLabel = document.createElement("p");
-		minTempLabel.classList.add("temp-label");
-		minTempLabel.innerHTML = "min";
-		min.appendChild(minTemp);
-		min.appendChild(minTempLabel);
-		const max = document.createElement("div");
-		max.classList.add("max");
-		const maxTemp = document.createElement("p");
-		maxTemp.classList.add("temp");
-		maxTemp.innerHTML = `${
-			tempUnit === "celcius" ? day.day.maxtemp_c : day.day.maxtemp_f
-		}°`;
-		const maxTempLabel = document.createElement("p");
-		maxTempLabel.classList.add("temp-label");
-		maxTempLabel.innerHTML = "max";
-		max.appendChild(maxTemp);
-		max.appendChild(maxTempLabel);
-		tempDetails.appendChild(min);
-		tempDetails.appendChild(max);
-		weekDetailsContainer.appendChild(date);
-		date.appendChild(dayName);
-		date.appendChild(dateText);
-		weekDetailsContainer.appendChild(tempDetails);
+		// Check if the data exists and has the expected structure
+		if (day && day.day && day.day.condition) {
+			const weekCard = document.createElement("div");
+			weekCard.classList.add("week-card");
+			const iconContainer = document.createElement("div");
+			iconContainer.classList.add("icon-container");
+			const icon = document.createElement("img");
+			icon.classList.add("week-brief-card-icon");
+			icon.src = getIconUrl(day.day.condition.icon);
+			iconContainer.appendChild(icon);
+			weekCard.appendChild(iconContainer);
+			weekForecastContainer.appendChild(weekCard);
+			const weekDetailsContainer = document.createElement("div");
+			weekDetailsContainer.classList.add("week-details-container");
+			weekCard.appendChild(weekDetailsContainer);
+			const date = document.createElement("div");
+			date.classList.add("date");
+			const dayName = document.createElement("p");
+			dayName.classList.add("day-name");
+			dayName.innerHTML = format(new Date(day.date_epoch * 1000), "iii");
+			const dateText = document.createElement("p");
+			dateText.classList.add("date");
+			dateText.innerHTML = format(new Date(day.date_epoch * 1000), "dd MMM");
+			const tempDetails = document.createElement("div");
+			tempDetails.classList.add("temp-details");
+			const min = document.createElement("div");
+			min.classList.add("min");
+			const minTemp = document.createElement("p");
+			minTemp.classList.add("temp");
+			minTemp.innerHTML = `${
+				tempUnit === "celcius" ? day.day.mintemp_c : day.day.mintemp_f
+			}°`;
+			const minTempLabel = document.createElement("p");
+			minTempLabel.classList.add("temp-label");
+			minTempLabel.innerHTML = "min";
+			min.appendChild(minTemp);
+			min.appendChild(minTempLabel);
+			const max = document.createElement("div");
+			max.classList.add("max");
+			const maxTemp = document.createElement("p");
+			maxTemp.classList.add("temp");
+			maxTemp.innerHTML = `${
+				tempUnit === "celcius" ? day.day.maxtemp_c : day.day.maxtemp_f
+			}°`;
+			const maxTempLabel = document.createElement("p");
+			maxTempLabel.classList.add("temp-label");
+			maxTempLabel.innerHTML = "max";
+			max.appendChild(maxTemp);
+			max.appendChild(maxTempLabel);
+			tempDetails.appendChild(min);
+			tempDetails.appendChild(max);
+			weekDetailsContainer.appendChild(date);
+			date.appendChild(dayName);
+			date.appendChild(dateText);
+			weekDetailsContainer.appendChild(tempDetails);
+		}
 	});
 };
 
